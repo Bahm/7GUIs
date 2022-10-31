@@ -39,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var _isDate1Valid = true;
   var _isDate2Valid = true;
 
+  get _isReturnFlight => _flightType == FlightType.returning;
   get _isBookingValid =>
       _isDate1Valid && (_flightType == FlightType.oneWay || _isDate2Valid);
 
@@ -116,7 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             TextFormField(
-              // TODO: Decorate disabled state to make it clearer
               initialValue: _dateFormat.format(_date2),
               decoration: InputDecoration(
                 errorText: _isDate2Valid
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ? null
                         : 'Return flight cannot be earlier than first flight'
                     : 'Invalid date',
-                enabled: _flightType == FlightType.returning,
+                enabled: _isReturnFlight,
               ),
               onChanged: (String newDate) {
                 setState(() {
@@ -136,6 +136,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 });
               },
+              style: TextStyle(
+                color: _isReturnFlight ? Colors.black : Colors.grey,
+              ),
             ),
             ElevatedButton(
               onPressed: _isBookingValid ? _bookFlight : null,
