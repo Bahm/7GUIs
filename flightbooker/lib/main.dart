@@ -34,8 +34,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _dateFormat = DateFormat('dd.MM.y');
   var _flightType = FlightType.oneWay;
-  var _date1 = DateTime.now();
-  var _date2 = DateTime.now();
+  var _date1 = DateTime(2022, 10, 31);
+  var _date2 = DateTime(2022, 10, 31);
   var _isDate1Valid = true;
   var _isDate2Valid = true;
 
