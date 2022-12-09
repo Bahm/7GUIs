@@ -1,0 +1,4 @@
+enum FlightType {
+  oneWay,
+  returning,
+}
